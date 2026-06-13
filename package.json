@@ -1,0 +1,56 @@
+{
+  "name": "sherlock-sheep-discord-bot",
+  "version": "1.0.0",
+  "author": "Alisha Penny <contact@alishapenny.com>",
+  "license": "MIT",
+  "description": "Sherlock Sheep Discord Bot & GUI",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "bot:build": "cd sherlock-sheep && npm install && npx tsc --project tsconfig.electron.json",
+    "build": "npm run bot:build && electron-builder",
+    "build:win": "npm run bot:build && electron-builder --win",
+    "build:mac": "npm run bot:build && electron-builder --mac",
+    "build:linux": "npm run bot:build && electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.2"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0"
+  },
+  "build": {
+    "appId": "io.itch.lunalucid.sherlock-sheep-discord-bot",
+    "productName": "Sherlock Sheep",
+    "copyright": "Copyright © 2026 Alisha Penny",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "sherlock-sheep/dist-electron/**/*",
+      "sherlock-sheep/node_modules/**/*",
+      "sherlock-sheep/package.json",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

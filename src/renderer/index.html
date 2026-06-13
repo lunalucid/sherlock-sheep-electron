@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title>Sherlock Sheep Bot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="titlebar-drag-region" aria-hidden="true"></div>
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────────── -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🔍</span>
+      <span class="logo-text">Sherlock Sheep</span>
+    </div>
+    <ul class="sidebar-nav">
+      <li><button class="nav-btn active" data-tab="dashboard">Dashboard</button></li>
+      <li><button class="nav-btn" data-tab="settings">Settings</button></li>
+      <li><button class="nav-btn" data-tab="logs">Logs</button></li>
+    </ul>
+    <div class="sidebar-status">
+      <span class="status-dot" id="statusDot"></span>
+      <span class="status-label" id="statusLabel">Offline</span>
+    </div>
+  </nav>
+
+  <!-- ── Main content ────────────────────────────────────────────────── -->
+  <main class="content">
+
+    <!-- Dashboard tab -->
+    <section class="tab active" id="tab-dashboard">
+      <header class="tab-header">
+        <h1>Dashboard</h1>
+        <p class="subtitle" id="botTagLine">Configure your bot in Settings, then start it below.</p>
+      </header>
+
+      <div class="card-row">
+        <div class="card">
+          <div class="card-label">Status</div>
+          <div class="card-value" id="cardStatus">Offline</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Bot Tag</div>
+          <div class="card-value" id="cardTag">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Events Today</div>
+          <div class="card-value" id="cardEvents">0</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" id="startBtn">Start Bot</button>
+        <button class="btn btn-danger" id="stopBtn" disabled>Stop Bot</button>
+      </div>
+
+      <div class="log-preview">
+        <div class="log-preview-header">
+          <span>Recent activity</span>
+          <button class="link-btn" data-tab="logs">View all →</button>
+        </div>
+        <ul class="log-list" id="logPreview"></ul>
+      </div>
+    </section>
+
+    <!-- Settings tab -->
+    <section class="tab" id="tab-settings">
+      <header class="tab-header">
+        <h1>Settings</h1>
+        <p class="subtitle">Your credentials are stored locally and encrypted — never sent anywhere.</p>
+      </header>
+
+      <div class="settings-form">
+        <div class="field-group">
+          <label for="discordToken">Discord Bot Token</label>
+          <p class="field-hint">
+            From the <a href="https://discord.com/developers/applications" target="_blank">Discord Developer Portal</a>
+            → your app → Bot → Token
+          </p>
+          <div class="input-wrap">
+            <input type="password" id="discordToken" placeholder="Paste your bot token…" autocomplete="off" />
+            <button class="reveal-btn" data-target="discordToken" title="Show/hide">👁</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="openaiKey">OpenAI API Key</label>
+          <p class="field-hint">
+            From <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>
+          </p>
+          <div class="input-wrap">
+            <input type="password" id="openaiKey" placeholder="sk-…" autocomplete="off" />
+            <button class="reveal-btn" data-target="openaiKey" title="Show/hide">👁</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="guildId">Guild ID <span class="optional">(optional)</span></label>
+          <p class="field-hint">
+            Your server's ID for instant slash command registration.
+            Leave blank to register globally (takes up to 1 hour).
+          </p>
+          <input type="text" id="guildId" placeholder="123456789012345678" autocomplete="off" />
+        </div>
+
+        <div class="settings-actions">
+          <button class="btn btn-primary" id="saveBtn">Save</button>
+          <button class="btn btn-ghost" id="clearBtn">Clear all data</button>
+        </div>
+        <p class="save-status" id="saveStatus"></p>
+      </div>
+    </section>
+
+    <!-- Logs tab -->
+    <section class="tab" id="tab-logs">
+      <header class="tab-header">
+        <h1>Logs</h1>
+        <button class="btn btn-ghost small" id="clearLogsBtn">Clear</button>
+      </header>
+      <ul class="log-list full" id="logFull"></ul>
+    </section>
+
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+
+</html>
