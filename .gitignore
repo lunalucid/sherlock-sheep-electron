@@ -1,10 +1,8 @@
 # Dependencies
 node_modules/
-sherlock-sheep/node_modules/
 
 # Build output
 dist/
-sherlock-sheep/dist-electron/
 out/
 build/
 release/

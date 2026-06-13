@@ -5,7 +5,7 @@ const { app } = require('electron')
 function getBotEntryPath () {
   return path.join(
     app.getAppPath(),
-    'sherlock-sheep',
+    '../sherlock-sheep-bot',
     'dist-electron',
     'electron-entry.js'
   )

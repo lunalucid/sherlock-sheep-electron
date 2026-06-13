@@ -8,7 +8,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
-    "bot:build": "cd sherlock-sheep && npm install && npx tsc --project tsconfig.electron.json",
+    "bot:build": "cd ../sherlock-sheep-bot && npm install && npx tsc --project tsconfig.electron.json",
     "build": "npm run bot:build && electron-builder",
     "build:win": "npm run bot:build && electron-builder --win",
     "build:mac": "npm run bot:build && electron-builder --mac",
@@ -31,9 +31,9 @@
     "files": [
       "src/**/*",
       "assets/**/*",
-      "sherlock-sheep/dist-electron/**/*",
-      "sherlock-sheep/node_modules/**/*",
-      "sherlock-sheep/package.json",
+      "../sherlock-sheep-bot/dist-electron/**/*",
+      "../sherlock-sheep-bot/node_modules/**/*",
+      "../sherlock-sheep-bot/package.json",
       "package.json"
     ],
     "win": {
