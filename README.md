@@ -1,5 +1,7 @@
 # Sherlock Sheep Discord Bot + Electron GUI
 
+[Discord bot repo here](https://github.com/lunalucid/sherlock-sheep-bot)
+
 ```bash
 # From the root (discord-bot-electron/)
 npm install           # install Electron deps
